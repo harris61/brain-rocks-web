@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07140C">
+<meta name="description" content="Brain Rocks: geser kartu, dengar rangkuman 1 menit, jawab kuis. Belajar tanpa brainrot.">
+<title>Brain Rocks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-BB96VN8o.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Dw3UC-Nb.css">
+</head>
+<body>
+<div class="phone" id="phone">
+  <header>
+    <span class="logo">brain rocks</span>
+    <span class="head-right"><span class="count" id="count"></span><button type="button" class="icon-btn small" id="deckMute" aria-label="Matikan suara"></button></span>
+  </header>
+
+  <div class="deck" id="deck">
+    <section class="end" id="end" aria-live="polite">
+      <h2 id="endTitle">Sesi hari ini selesai.</h2>
+      <p id="endText"></p>
+      <div class="stats">
+        <div class="stat"><b id="sRight">0</b><span>didalemin</span></div>
+        <div class="stat"><b id="sUp">0</b><span>disimpan</span></div>
+        <div class="stat"><b id="sLeft">0</b><span>dilewati</span></div>
+      </div>
+      <button type="button" id="restart">Lihat lagi kartu yang dilewati</button>
+    </section>
+  </div>
+
+  <nav>
+    <a href="#" data-tab="deck" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Jelajah</a>
+    <a href="#" data-tab="koleksi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Koleksi<span class="badge" id="badge">0</span></a>
+    <a href="#" data-tab="progres"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 20V14M12 20V8M18 20V4"/></svg>Progres</a>
+  </nav>
+
+  <!-- Pemanasan: kuis ulangan yang sudah jatuh tempo -->
+  <section class="warm" id="warm" aria-label="Pemanasan">
+    <div class="warm-thumbs" id="warmThumbs"></div>
+    <p class="label">Pemanasan</p>
+    <h2 id="warmTitle"></h2>
+    <p>Kuis ulangan dari topik yang pernah kamu pelajari, pakai soal yang beda. Cuma sebentar.</p>
+    <button type="button" class="btn primary" id="warmStart">Mulai</button>
+  </section>
+
+  <!-- Alur topik -->
+  <section class="flow" id="flow" aria-label="Isi topik">
+    <div class="flow-bar">
+      <button type="button" class="icon-btn" id="flowClose" aria-label="Tutup topik"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="progress" id="progress"></div>
+      <button type="button" class="icon-btn" id="muteBtn" aria-label="Matikan suara"></button>
+    </div>
+
+    <div class="slides" id="slides">
+      <img class="slide-img" id="slideImg" alt="">
+      <button type="button" class="tap prev" id="tapPrev" aria-label="Slide sebelumnya"></button>
+      <button type="button" class="tap next" id="tapNext" aria-label="Slide berikutnya"></button>
+      <div class="subtitle"><p class="step" id="slideStep"></p><p id="slideText"></p></div>
+    </div>
+
+    <div class="page" id="pageChoice">
+      <div class="choice-hero">
+        <h2 id="choiceTitle"></h2>
+        <p>Rangkuman selesai. Mau dalemin lagi, atau langsung kuis?</p>
+      </div>
+      <div class="page-actions">
+        <button type="button" class="btn ghost" id="toDeep">Dalemin lagi</button>
+        <button type="button" class="btn primary" id="toQuiz">Lanjut ke kuis</button>
+      </div>
+    </div>
+
+    <div class="page" id="pageDeep">
+      <div class="page-scroll" id="deepBody"></div>
+      <div class="page-actions"><button type="button" class="btn primary" id="deepToQuiz">Lanjut ke kuis</button></div>
+    </div>
+
+    <div class="page" id="pageQuiz">
+      <div class="page-scroll">
+        <p class="label" id="quizLabel" style="margin-top:4px">Kuis</p>
+        <p class="quiz-q" id="quizQ"></p>
+        <div class="opts" id="quizOpts"></div>
+        <div class="feedback" id="quizFb" aria-live="polite"><strong id="fbTitle"></strong><p id="fbText"></p></div>
+      </div>
+      <div class="page-actions"><button type="button" class="btn primary" id="quizDone" hidden>Selesai</button></div>
+    </div>
+  </section>
+
+  <!-- Koleksi & Progres -->
+  <section class="sheet" id="sheet">
+    <div class="flow-bar">
+      <button type="button" class="icon-btn" id="sheetClose" aria-label="Tutup"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <strong style="font-size:18px" id="sheetTitle"></strong>
+    </div>
+    <div class="page-scroll" id="sheetBody"></div>
+  </section>
+
+  <div class="toast" id="toast"></div>
+</div>
+</body>
+</html>
