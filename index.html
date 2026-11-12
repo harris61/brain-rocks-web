@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-BFLSi9xS.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DHM9sUCF.css">
+  <script type="module" crossorigin src="./assets/index-Cqq6WIiN.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DmvZDI4B.css">
 </head>
 <body>
 <div class="phone" id="phone">
@@ -80,10 +80,11 @@
 
     <div class="page" id="pageQuiz">
       <div class="page-scroll">
-        <p class="label" id="quizLabel" style="margin-top:4px">Kuis</p>
+        <div class="quiz-hero" id="quizHero" aria-hidden="true"></div>
+        <p class="quiz-tags"><span class="chip accent" id="quizLabel">Kuis</span><span class="chip" id="quizTopic"></span></p>
         <p class="quiz-q" id="quizQ"></p>
         <div class="opts" id="quizOpts"></div>
-        <div class="feedback" id="quizFb" aria-live="polite"><strong id="fbTitle"></strong><p id="fbText"></p></div>
+        <div class="feedback" id="quizFb" aria-live="polite"><strong id="fbTitle"></strong><p id="fbText"></p><p class="fb-next" id="fbNext"></p></div>
       </div>
       <div class="page-actions"><button type="button" class="btn primary" id="quizDone" hidden>Selesai</button></div>
     </div>
@@ -99,6 +100,6 @@
   </section>
 
   <div class="toast" id="toast"></div>
-</div>
+</div>
 </body>
 </html>
